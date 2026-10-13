@@ -1,3 +1,5 @@
+<img src="assets/logo.svg" alt="Code Analyzer logo" width="96">
+
 # Code Analyzer
 
 A desktop application (PySide6 / Qt) that scans a project folder and shows line statistics for its source files: totals, charts, the largest files and per-folder breakdowns. Results can be exported to CSV.

@@ -22,6 +22,7 @@ from PySide6.QtWidgets import (
 from services.analytics import AnalyticsService
 from services.exporter import CsvExporter
 from services.worker import AnalyzerWorker
+from ui.logo import logo_pixmap
 from ui.theme import DARK, LIGHT, build_stylesheet, system_theme
 from ui.widgets.data_table import Column, DataTablePage
 from ui.widgets.overview_page import OverviewPage, folder_name
@@ -147,14 +148,27 @@ class MainWindow(QMainWindow):
         layout.setContentsMargins(16, 22, 16, 16)
         layout.setSpacing(4)
 
+        logo = QLabel()
+        logo.setPixmap(logo_pixmap(36, self.devicePixelRatioF()))
+        logo.setFixedSize(36, 36)
+
         app_name = QLabel("Code Analyzer")
         app_name.setObjectName("AppName")
 
         tagline = QLabel("Source line statistics")
         tagline.setObjectName("AppTagline")
 
-        layout.addWidget(app_name)
-        layout.addWidget(tagline)
+        names = QVBoxLayout()
+        names.setSpacing(0)
+        names.addWidget(app_name)
+        names.addWidget(tagline)
+
+        brand = QHBoxLayout()
+        brand.setSpacing(10)
+        brand.addWidget(logo)
+        brand.addLayout(names, 1)
+
+        layout.addLayout(brand)
         layout.addSpacing(24)
 
         section = QLabel("VIEWS")
@@ -246,8 +260,8 @@ class MainWindow(QMainWindow):
         widget = QFrame()
         widget.setObjectName("Card")
 
-        icon = QLabel("{ }")
-        icon.setObjectName("EmptyIcon")
+        icon = QLabel()
+        icon.setPixmap(logo_pixmap(72, self.devicePixelRatioF()))
 
         title = QLabel("No project analyzed yet")
         title.setObjectName("EmptyTitle")

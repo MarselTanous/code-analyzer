@@ -312,11 +312,6 @@ def build_stylesheet(t: Theme) -> str:
         font-size: 14px;
     }}
 
-    #EmptyIcon {{
-        font-size: 44px;
-        color: {t.accent};
-    }}
-
     /* Tables */
 
     QTableView {{
